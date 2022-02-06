@@ -1,18 +1,33 @@
 import matplotlib.pyplot as plt
+import matplotlib.dates
+import matplotlib
 import numpy as np
 import pandas
+import datetime as DT
+
+'''TODO 
+USA schools
+HK Info
+CAN Mask/School/Vaccine Title
+AB school closed, mask date
+'''
+
+def s_2_d(date):
+    converted_date = matplotlib.dates.datestr2num(date)
+    return converted_date
 
 
 def Australia_restriction():
-    mask1 = [2,3] #July 22, 2020- Present
-    travel1 = [3,4] #March 20, 2020 - Present
-    school1 = [1,4] #March 10, 2020 - Present
-    vaccine1 = [4] #Jan 25. 2021 Approved
+    
+    mask1 = [s_2_d('2020-07-22'),s_2_d('2022-01-01')] #July 22, 2020- Present
+    travel1 = [s_2_d('2020-03-20'),s_2_d('2022-01-01')] #March 20, 2020 - Present
+    school1 = [s_2_d('2020-03-10'),s_2_d('2022-01-01')] #March 10, 2020 - Present
+    vaccine1 = [s_2_d('2021-01-25')] #Jan 25. 2021 Approved
 
-    plt.plot(mask1, [1,1], 'o-') 
-    plt.plot(travel1, [2,2], 'o-') 
-    plt.plot(school1, [3,3], 'o-') 
-    plt.plot(vaccine1, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'o-') 
+    plt.plot_date(travel1, [2,2], 'o-') 
+    plt.plot_date(school1, [3,3], 'o-') 
+    plt.plot_date(vaccine1, [4], 'o-')
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
     plt.text(travel1[0],2.1, 'International Travel Restrictions')
@@ -20,7 +35,7 @@ def Australia_restriction():
     plt.text(vaccine1[0],4.1, 'First Vaccine Approved')
 
 
-    plt.xlim(0,5)
+    plt.xlim(18262.0,18993.0)
     plt.ylim(0,5)
 
     ax = plt.gca()
@@ -32,15 +47,16 @@ def Australia_restriction():
     return
 
 def USA_restriction():
-    mask1 = [2,3] #July 27, 2020-May 13,2021
-    travel1 = [3,4] #March 11, 2020 - Present
-    school1 = [1,4] #March 10, 2020 - Present
-    vaccine1 = [4] #Dec 11. 2020 Approved
+    
+    mask1 = [s_2_d('2020-07-27'),s_2_d('2021-05-13')] #July 27, 2020-May 13,2021
+    travel1 = [s_2_d('2020-03-11'),s_2_d('2022-01-01')] #March 11, 2020 - Present
+    school1 = [s_2_d('2020-03-10'),s_2_d('2022-01-01')] #March 10, 2020 - ?
+    vaccine1 = [s_2_d('2020-12-11')] #Dec 11. 2020 Approved
 
-    plt.plot(mask1, [1,1], 'o-') 
-    plt.plot(travel1, [2,2], 'o-') 
-    plt.plot(school1, [3,3], 'o-') 
-    plt.plot(vaccine1, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'o-') 
+    plt.plot_date(travel1, [2,2], 'o-') 
+    plt.plot_date(school1, [3,3], 'o-') 
+    plt.plot_date(vaccine1, [4], 'o-')
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
     plt.text(travel1[0],2.1, 'International Travel Restrictions')
@@ -48,7 +64,7 @@ def USA_restriction():
     plt.text(vaccine1[0],4.1, 'First Vaccine Approved')
 
 
-    plt.xlim(0,5)
+    plt.xlim(18262.0,18993.0)    
     plt.ylim(0,5)
 
     ax = plt.gca()
@@ -89,28 +105,28 @@ def HK_restriction():
 
 def CAN_restriction():
     mask1 = [2,3] #?
-    travel1 = [3,4] #March 16, 2020 - Present
+    travel1 = [s_2_d('2020-03-16'),s_2_d('2022-01-01')] #March 16, 2020 - Present
     school1 = [1,4] #?
-    vaccine1 = [4] #Dec 9. 2020 Approved Adults
-    vaccine2 = [4.5] #Nov. 19 2021 Approved Kids
+    vaccine1 = [s_2_d('2020-12-09')] #Dec 9. 2020 Approved Adults
+    vaccine2 = [s_2_d('2021-11-19')] #Nov. 19 2021 Approved Kids
 
-    plt.plot(mask1, [1,1], 'o-') 
-    plt.plot(travel1, [2,2], 'o-') 
-    plt.plot(school1, [3,3], 'o-') 
-    plt.plot(vaccine1, [4], 'o-')
-    plt.plot(vaccine2, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'o-') 
+    plt.plot_date(travel1, [2,2], 'o-') 
+    plt.plot_date(school1, [3,3], 'o-') 
+    plt.plot_date(vaccine1, [4], 'o-')
+    plt.plot_date(vaccine2, [4], 'o-')
 
 
-    plt.text(mask1[0],1.1, 'Mask Mandate')
+    plt.text(mask1[0],1.1, 'Mask Mandates')
     plt.text(travel1[0],2.1, 'International Travel Restrictions')
     plt.text(school1[0],3.1, 'School Closures')
     plt.text(vaccine1[0],4.1, 'First Vaccine Approved')
-    plt.text(vaccine1[0],4.1, 'First Vaccine Approved for Youth')
+    plt.text(vaccine2[0],4.1, 'First Vaccine Approved for Youth')
 
 
 
 
-    plt.xlim(0,5)
+    plt.xlim(18262.0,18993.0)
     plt.ylim(0,5)
 
     ax = plt.gca()
@@ -122,37 +138,37 @@ def CAN_restriction():
     return
 
 def AB_restriction():
-    mask1 = [2,3] #Dec 8 2020-July 7 2021
-    mask2 = [4,5] #September 4 2021-Present
-    travel1 = [3,4] #March 16, 2020 - Present
-    school1 = [1,2] #March 16, 2020 - June 30 2020
-    school2 = [2.5,3] #November 24 2020 - Jan 11 2021
-    school3 = [4.5,5] #April 7 2021 - May 25 2021
+    mask1 = [s_2_d('2020-12-08'),s_2_d('2021-07-01')] #Dec 8 2020-July 1 2021
+    mask2 = [s_2_d('2021-09-04'),s_2_d('2022-01-01')] #September 4 2021-Present
+    travel1 = [s_2_d('2020-03-16'),s_2_d('2022-01-01')] #March 16, 2020 - Present
+    school1 = [s_2_d('2020-03-16'),s_2_d('2020-06-30')] #March 16, 2020 - June 30 2020
+    school2 = [s_2_d('2020-11-24'),s_2_d('2021-01-11')] #November 24 2020 - Jan 11 2021
+    school3 = [s_2_d('2021-04-07'),s_2_d('2021-05-25')] #April 7 2021 - May 25 2021
     school4 = [0,1] #Jan 2022 - ?
-    vaccine1 = [4] #Dec 9. 2020 Approved Adults
-    vaccine2 = [4.5] #Nov. 19 2021 Approved Kids
+    vaccine1 = [s_2_d('2020-12-09')] #Dec 9. 2020 Approved Adults
+    vaccine2 = [s_2_d('2021-11-19')] #Nov. 19 2021 Approved Kids
 
-    plt.plot(mask1, [1,1], 'o-') 
-    plt.plot(mask2, [1,1], 'o-') 
-    plt.plot(travel1, [2,2], 'o-') 
-    plt.plot(school1, [3,3], 'o-') 
-    plt.plot(school2, [3,3], 'o-') 
-    plt.plot(school3, [3,3], 'o-') 
-    plt.plot(school4, [3,3], 'o-') 
-    plt.plot(vaccine1, [4], 'o-')
-    plt.plot(vaccine2, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'bo-') 
+    plt.plot_date(mask2, [1,1], 'bo-') 
+    plt.plot_date(travel1, [2,2], 'o-', color='orange') 
+    plt.plot_date(school1, [3,3], 'go-') 
+    plt.plot_date(school2, [3,3], 'go-') 
+    plt.plot_date(school3, [3,3], 'go-') 
+    plt.plot_date(school4, [3,3], 'go-') 
+    plt.plot_date(vaccine1, [4], 'ro-')
+    plt.plot_date(vaccine2, [4], 'ro-')
 
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
     plt.text(travel1[0],2.1, 'International Travel Restrictions')
     plt.text(school1[0],3.1, 'School Closures')
     plt.text(vaccine1[0],4.1, 'First Vaccine Approved')
-    plt.text(vaccine1[0],4.1, 'First Vaccine Approved for Youth')
+    plt.text(vaccine2[0]-100,4.1, 'First Vaccine Approved for Youth')
 
 
 
 
-    plt.xlim(0,5)
+    plt.xlim(18262.0,18993.0)    
     plt.ylim(0,5)
 
     ax = plt.gca()
@@ -195,8 +211,8 @@ def canada_alberta_graph():
 
 
 Australia_restriction()
-USA_restriction()
-HK_restriction()
+# USA_restriction()
+# HK_restriction()
 CAN_restriction()
 AB_restriction()
 # canada_alberta_graph()
