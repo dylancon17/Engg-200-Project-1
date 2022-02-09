@@ -6,8 +6,8 @@ import pandas
 import datetime as DT
 
 '''TODO 
-USA schools
-HK Info
+HK School
+Graph Colours Slightly Different
 '''
 
 def s_2_d(date):
@@ -26,10 +26,10 @@ def Australia_restriction():
     school1 = [s_2_d('2020-03-10'),s_2_d('2022-01-01')] #March 10, 2020 - Present
     vaccine1 = [s_2_d('2021-01-25')] #Jan 25. 2021 Approved
 
-    plt.plot_date(mask1, [1,1], 'o-') 
-    plt.plot_date(travel1, [2,2], 'o-') 
-    plt.plot_date(school1, [3,3], 'o-') 
-    plt.plot_date(vaccine1, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'bo-') 
+    plt.plot_date(travel1, [2,2], 'o-', color = 'orange') 
+    plt.plot_date(school1, [3,3], 'go-') 
+    plt.plot_date(vaccine1, [4], 'ro-')
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
     plt.text(travel1[0]-50,2.1, 'International Travel Restrictions')
@@ -56,13 +56,13 @@ def USA_restriction():
 
     mask1 = [s_2_d('2020-07-27'),s_2_d('2021-05-13')] #July 27, 2020-May 13,2021
     travel1 = [s_2_d('2020-03-11'),s_2_d('2022-01-01')] #March 11, 2020 - Present
-    school1 = [s_2_d('2020-03-10'),s_2_d('2022-01-01')] #March 10, 2020 - ?
+    school1 = [s_2_d('2020-03-10'),s_2_d('2021-02-07')] #March 10, 2020 - Feb 7 2021
     vaccine1 = [s_2_d('2020-12-11')] #Dec 11. 2020 Approved
 
-    plt.plot_date(mask1, [1,1], 'o-') 
-    plt.plot_date(travel1, [2,2], 'o-') 
-    plt.plot_date(school1, [3,3], 'o-') 
-    plt.plot_date(vaccine1, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'bo-') 
+    plt.plot_date(travel1, [2,2], 'o-', color = 'orange') 
+    plt.plot_date(school1, [3,3], 'go-') 
+    plt.plot_date(vaccine1, [4], 'ro-')
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
     plt.text(travel1[0]-25,2.1, 'International Travel Restrictions')
@@ -88,20 +88,24 @@ def HK_restriction():
     plt.xticks(rotation = 90, ha='center')
     plt.subplots_adjust(left=0.12, bottom=0.22, right=0.9, top=0.88, wspace=0.2, hspace=0.2)
     
-    mask1 = [2,3] #July 7 - ?
-    travel1 = [3,4] #February 28 2020 - ?
-    school1 = [1,4] #Jan 25 2020 - ?
-    vaccine1 = [4] #Feb 22, 2021
+    mask1 = [s_2_d('2020-07-07'),s_2_d('2022-01-01')] #July 7 - ?
+    travel1 = [s_2_d('2020-02-28'),s_2_d('2022-01-01')] #February 28 2020 - ?
+    school1 = [s_2_d('2020-01-25'),s_2_d('2020-05-27')] #25/1/2020-27/5/2020
+    school2 = [s_2_d('2020-07-13'),s_2_d('2020-09-23')] #13/7/2020-23/9/2020
+    school3 = [s_2_d('2020-11-23'),s_2_d('2021-02-22')] #23/11/2020-22/2/2021
+    vaccine1 = [s_2_d('2021-02-22')] #Feb 22, 2021
 
-    plt.plot_date(mask1, [1,1], 'o-') 
-    plt.plot_date(travel1, [2,2], 'o-') 
-    plt.plot_date(school1, [3,3], 'o-') 
-    plt.plot_date(vaccine1, [4], 'o-')
+    plt.plot_date(mask1, [1,1], 'bo-') 
+    plt.plot_date(travel1, [2,2], 'o-', color = 'orange') 
+    plt.plot_date(school1, [3,3], 'go-')
+    plt.plot_date(school2, [3,3], 'go-') 
+    plt.plot_date(school3, [3,3], 'go-') 
+    plt.plot_date(vaccine1, [4], 'ro-')
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
-    plt.text(travel1[0],2.1, 'International Travel Restrictions')
+    plt.text(travel1[0],2.1-15, 'International Travel Restrictions')
     plt.text(school1[0],3.1, 'School Closures')
-    plt.text(vaccine1[0],4.1, 'First Vaccine Approved')
+    plt.text(vaccine1[0]-180,4.1, 'First Vaccine Approved')
 
 
     plt.xlim(18262.0,18993.0)    
