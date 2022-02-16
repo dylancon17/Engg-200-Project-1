@@ -103,7 +103,7 @@ def HK_restriction():
     plt.plot_date(vaccine1, [4], 'ro-')
 
     plt.text(mask1[0],1.1, 'Mask Mandate')
-    plt.text(travel1[0],2.1-15, 'International Travel Restrictions')
+    plt.text(travel1[0]-15,2.1, 'International Travel Restrictions')
     plt.text(school1[0],3.1, 'School Closures')
     plt.text(vaccine1[0]-180,4.1, 'First Vaccine Approved')
 
